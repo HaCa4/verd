@@ -7,11 +7,11 @@ const Header: React.FC = () => {
   const postList = useSelector((state: IInitialState) => state.reducer.postList);
 
   return (
-    <div className="flex items-center justify-between  h-16 px-4  rounded-lg bg-white">
+    <div className="flex flex-col md:flex-row items-center justify-between h-20 md:h-16 px-4  rounded-lg bg-white">
       <div className="flex font-bold text-lg">
         <Link to="/">Arbit Blog</Link>
       </div>
-      <div className="flex justify-around items-center w-1/5">
+      <div className="flex justify-around items-center w-4/5 md:w-1/5">
         <div className="relative font-bold text-gray-500">
           Posts
           <span className="w-5 h-5 bg-green-200 text-green-700 absolute -top-3 -right-3 rounded-full text-xs flex items-center justify-center ">

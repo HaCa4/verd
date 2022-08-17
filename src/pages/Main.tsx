@@ -15,7 +15,7 @@ const Main: React.FC = () => {
     getPostList();
   }, []);
   return (
-    <div className="flex flex-wrap">
+    <div className="flex flex-wrap justify-evenly items-center">
       {postList?.map((post) => {
         return (
           <div key={post.id} onClick={() => navigate(`/${post.id}`)}>

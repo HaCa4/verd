@@ -3,6 +3,7 @@ import { Actions, ActionTypes, IInitialState } from "../../utils/types";
 const initialState: IInitialState = {
   reducer: {
     postList: undefined,
+    commentList: undefined,
     selectedPost: undefined,
     title: undefined,
     body: undefined,
@@ -21,6 +22,8 @@ const Reducers = (state = initialState, action: ActionTypes) => {
       return { ...state, isLoading: true, error: undefined };
     case Actions.SET_POST_LIST:
       return { ...state, postList: action.payload, isLoading: false };
+    case Actions.GET_COMMENTS:
+      return { ...state, commentList: action.payload, isLoading: false };
     case Actions.GET_POST_BY_ID:
       return { ...state, selectedPost: action.payload, isLoading: false };
     case Actions.SET_ERROR:

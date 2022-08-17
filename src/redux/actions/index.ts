@@ -81,3 +81,14 @@ export const setPostBody =
       dispatch({ type: Actions.SET_ERROR, payload: errorMessage });
     }
   };
+
+export const getComments =
+  (id?: string) => async (dispatch: Dispatch, getState: () => IInitialState) => {
+    try {
+      const data = await axios.get(`https://jsonplaceholder.typicode.com/comments?postId=${id}`);
+      dispatch({ type: Actions.GET_COMMENTS, payload: data.data });
+    } catch (error) {
+      const errorMessage = "Faced with an error while getting comments of the post: " + error;
+      dispatch({ type: Actions.SET_ERROR, payload: errorMessage });
+    }
+  };

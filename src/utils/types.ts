@@ -8,10 +8,18 @@ export interface ISinglePost {
   body?: string;
   userId?: string;
 }
+export interface ISingleComment {
+  id?: string;
+  name?: string;
+  body?: string;
+  postId?: string;
+  email?: string;
+}
 
 export interface IInitialState {
   reducer: {
     postList: ISinglePost[] | undefined;
+    commentList: ISingleComment[] | undefined;
     selectedPost: ISinglePost | undefined;
     body: string | undefined;
     title: string | undefined;
@@ -26,6 +34,7 @@ export enum Actions {
   DELETE_POST = "DELETE_POST",
   GET_POST_LIST = "GET_POST_LIST",
   SET_POST_LIST = "SET_POST_LIST",
+  GET_COMMENTS = "GET_COMMENTS",
   SELECT_POST = "SELECT_POST",
   SET_ERROR = "SET_ERROR",
   SET_BODY = "SET_BODY",
@@ -51,6 +60,10 @@ interface SetPostList {
   type: Actions.SET_POST_LIST;
   payload: ISinglePost[];
 }
+interface GetComments {
+  type: Actions.GET_COMMENTS;
+  payload: ISingleComment[];
+}
 interface GetPostById {
   type: Actions.GET_POST_BY_ID;
   payload: ISinglePost;
@@ -73,6 +86,7 @@ export type ActionTypes =
   | DeletePost
   | GetPostList
   | SetPostList
+  | GetComments
   | GetPostById
   | SetError
   | SetPostBody
