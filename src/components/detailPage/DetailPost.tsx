@@ -13,10 +13,9 @@ const DetailPost = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [body, setBody] = useState<string>();
-  const [title, setTitle] = useState<string>();
-
   const post = useSelector((state: IInitialState) => state.reducer.selectedPost);
+  const [body, setBody] = useState<string | undefined>(post?.body);
+  const [title, setTitle] = useState<string | undefined>(post?.title);
 
   const { getPostById, deletePost, addNewPost, editPost } = bindActionCreators(
     actionCreators,
@@ -48,7 +47,6 @@ const DetailPost = () => {
           <label className="font-bold">Title</label>
           <textarea
             className="w-full h-44 text-black font-bold mt-1 break-all p-4 rounded-lg resize-none border border-gray-300 bg-gray-100 "
-            placeholder={post?.title}
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
@@ -57,7 +55,6 @@ const DetailPost = () => {
           <label className="font-bold">Detail</label>
           <textarea
             className="w-full h-72 text-black font-semibold mt-1 break-all p-4 rounded-lg resize-none border border-gray-300 bg-gray-100 "
-            placeholder={post?.body}
             value={body}
             onChange={(e) => setBody(e.target.value)}
           />
